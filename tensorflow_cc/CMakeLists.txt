@@ -60,13 +60,13 @@ if(TENSORFLOW_SHARED)
     "${CMAKE_INSTALL_PREFIX}/include/tensorflow/tensorflow/contrib/makefile/downloads"
     "${CMAKE_INSTALL_PREFIX}/include/tensorflow/tensorflow/contrib/makefile/downloads/eigen"
     "${CMAKE_INSTALL_PREFIX}/include/tensorflow/tensorflow/contrib/makefile/downloads/gemmlowp"
-    "${CMAKE_INSTALL_PREFIX}/include/tensorflow/tensorflow/contrib/makefile/gen/protobuf-host/include"
+    # "${CMAKE_INSTALL_PREFIX}/include/tensorflow/tensorflow/contrib/makefile/gen/protobuf-host/include"
   )
   target_link_libraries(
     tensorflow_cc_shared INTERFACE
     "${CMAKE_INSTALL_PREFIX}/lib/tensorflow_cc/libtensorflow_cc.so"
     # static protobuf is used from the contrib/makefile
-    "${CMAKE_INSTALL_PREFIX}/lib/tensorflow_cc/libprotobuf.a"
+    # "${CMAKE_INSTALL_PREFIX}/lib/tensorflow_cc/libprotobuf.a"
     dl pthread
   )
 endif()
@@ -92,7 +92,7 @@ if(TENSORFLOW_STATIC)
     "${CMAKE_INSTALL_PREFIX}/include/tensorflow/tensorflow/contrib/makefile/downloads"
     "${CMAKE_INSTALL_PREFIX}/include/tensorflow/tensorflow/contrib/makefile/downloads/eigen"
     "${CMAKE_INSTALL_PREFIX}/include/tensorflow/tensorflow/contrib/makefile/downloads/gemmlowp"
-    "${CMAKE_INSTALL_PREFIX}/include/tensorflow/tensorflow/contrib/makefile/gen/protobuf-host/include"
+    # "${CMAKE_INSTALL_PREFIX}/include/tensorflow/tensorflow/contrib/makefile/gen/protobuf-host/include"
     "${CMAKE_INSTALL_PREFIX}/include/tensorflow/tensorflow/contrib/makefile/gen/proto"
     "${CMAKE_INSTALL_PREFIX}/include/tensorflow/tensorflow/contrib/makefile/gen/proto_text"
   )
@@ -101,7 +101,7 @@ if(TENSORFLOW_STATIC)
     "-Wl,--allow-multiple-definition"
     "-Wl,--whole-archive ${CMAKE_INSTALL_PREFIX}/lib/tensorflow_cc/libtensorflow-core.a"
     "-Wl,--no-whole-archive"
-    "${CMAKE_INSTALL_PREFIX}/lib/tensorflow_cc/libprotobuf.a"
+    # "${CMAKE_INSTALL_PREFIX}/lib/tensorflow_cc/libprotobuf.a"
     dl pthread
   )
 endif()
@@ -144,10 +144,10 @@ install(
   DESTINATION include/tensorflow/third_party
 )
 # install static libprotobuf from contrib/makefile
-install(
-  FILES "${CMAKE_CURRENT_BINARY_DIR}/tensorflow/tensorflow/contrib/makefile/gen/protobuf-host/lib/libprotobuf.a"
-  DESTINATION lib/tensorflow_cc
-)
+# install(
+#   FILES "${CMAKE_CURRENT_BINARY_DIR}/tensorflow/tensorflow/contrib/makefile/gen/protobuf-host/lib/libprotobuf.a"
+#   DESTINATION lib/tensorflow_cc
+# )
 # shared library specific
 if(TENSORFLOW_SHARED)
   install(
